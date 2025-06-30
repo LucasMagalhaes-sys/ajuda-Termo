@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente Termo</title>
+    
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Tailwind CSS (ainda necessário para as classes utilitárias) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Assistente Termo</h1>
+            <p class="text-gray-600 mt-2">A ferramenta definitiva para encontrar a palavra certa!</p>
+        </header>
+
+        <main class="card">
+            <div class="mb-6">
+                <label class="block text-lg font-semibold mb-2 text-green-700">1. Posição Certa (Letras Verdes)</label>
+                <p class="text-sm text-gray-500 mb-3">Digite as letras que estão no lugar exato.</p>
+                <div id="pattern-container" class="flex justify-center space-x-2">
+                    <input type="text" maxlength="1" class="position-input" autocomplete="off">
+                    <input type="text" maxlength="1" class="position-input" autocomplete="off">
+                    <input type="text" maxlength="1" class="position-input" autocomplete="off">
+                    <input type="text" maxlength="1" class="position-input" autocomplete="off">
+                    <input type="text" maxlength="1" class="position-input" autocomplete="off">
+                </div>
+            </div>
+            
+            <hr class="my-8">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                    <label for="included-letters" class="block text-lg font-semibold mb-2 text-yellow-600">2. Todas as Letras Amarelas</label>
+                    <p class="text-sm text-gray-500 mb-3">Digite TODAS as letras amarelas que você encontrou.</p>
+                    <input type="text" id="included-letters" class="text-input w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none uppercase" placeholder="Ex: AR" autocomplete="off">
+                </div>
+                <div>
+                    <label for="excluded-letters" class="block text-lg font-semibold mb-2 text-gray-500">3. Todas as Letras Cinzas</label>
+                     <p class="text-sm text-gray-500 mb-3">Digite TODAS as letras que não estão na palavra.</p>
+                    <input type="text" id="excluded-letters" class="text-input w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none uppercase" placeholder="Ex: TOPO" autocomplete="off">
+                </div>
+            </div>
+            
+            <div class="mb-8">
+                <label class="block text-lg font-semibold mb-2 text-yellow-600">4. Posições a Excluir (Onde as Amarelas Estavam)</label>
+                <p class="text-sm text-gray-500 mb-3">Para cada casa, digite as letras que ficaram amarelas NELA.</p>
+                <div id="yellow-positions-container" class="grid grid-cols-5 gap-2">
+                    <input type="text" class="yellow-position-input" placeholder="Pos 1" autocomplete="off">
+                    <input type="text" class="yellow-position-input" placeholder="Pos 2" autocomplete="off">
+                    <input type="text" class="yellow-position-input" placeholder="Pos 3" autocomplete="off">
+                    <input type="text" class="yellow-position-input" placeholder="Pos 4" autocomplete="off">
+                    <input type="text" class="yellow-position-input" placeholder="Pos 5" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button id="search-button" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 duration-300 shadow-md focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:bg-gray-400 disabled:cursor-wait">
+                    Buscar Palavras
+                </button>
+            </div>
+        </main>
+        
+        <footer id="results-container" class="mt-8">
+            <div id="results-header" class="text-center text-lg font-medium text-gray-700 mb-4"></div>
+            <div id="results-list" class="card max-h-96 overflow-y-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 text-center">
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript Externo -->
+    <script src="script.js"></script>
+</body>
+</html>
